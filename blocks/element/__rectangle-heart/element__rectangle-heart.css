@@ -1,0 +1,15 @@
+.element__rectangle-heart{
+    width:22px;
+    border:none;
+    padding:0;
+    background-color: #ffffff;
+    position:absolute;
+    bottom:30px;
+    right:20px;
+    transition:opacity 0.4s linear;
+}
+
+.element__rectangle-heart:hover{
+    opacity:0.6;
+    cursor:pointer;
+}
