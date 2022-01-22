@@ -2,9 +2,10 @@
     margin-left: 244px;
     width:150px;
     min-height:50px;
-    background-color: #000000;
-    border:1px solid #ffffff;
+    background-color: rgba(0,0,0,0);
+    border:2px solid #ffffff;
     transition:opacity 0.4s linear;
+    border-radius: 2px;
 }
 
 .profile__addbutton:hover{

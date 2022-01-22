@@ -4,14 +4,11 @@
     height:33px;
     background-size: contain;
     background-repeat:no-repeat;
+    margin-bottom: 41px;
 }
 
 .header__logo:hover{
-    background-image: url("../../../images/Vector-black.svg");
-    width:142px;
-    height:33px;
-    background-size: contain;
-    background-repeat:no-repeat;    
+    background-image: url("../../../images/Vector-black.svg");  
 }
 
 @media  screen and (min-width:320px) and (max-width:1279px) {
@@ -19,5 +16,6 @@
         width:104px;
         height:25px;
         margin:28px 27px 0;
+        margin-bottom: 31px;
     }  
 }

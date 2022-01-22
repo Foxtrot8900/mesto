@@ -1,11 +1,14 @@
 .element{
-    display:flex;
+    display:grid;
     flex-direction:column;
     width:282px;
-    min-height: 361px;
     margin-right: 17px;
     margin-bottom: 20px;
     position:relative;
+    border-radius: 10px;
+    background-color:#ffffff;
+    grid-template-columns:250px max-content;
+    grid-template-rows:max-content max-content;
 }
 
 .element:nth-child(3n){

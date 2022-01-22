@@ -1,4 +1,7 @@
 .element__rectangle-image{
     width:282px;
     border-radius: 10px 10px 0 0;
+    grid-column: 1/3;
+    grid-row: 1/2;
+    min-height: 282px;
 }
