@@ -11,7 +11,7 @@
     margin-top: 16px;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;    
+    overflow: hidden;
     max-height: 340px;
 }
 
