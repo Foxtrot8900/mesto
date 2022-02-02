@@ -18,8 +18,9 @@
     .profile__info-editbutton{
         margin-left:10px;
         width:18px;
-        min-height:18px;
+        min-height: 18px;
         padding: 0;
+        align-self: center;
+        border:none;
     }
-    
 }

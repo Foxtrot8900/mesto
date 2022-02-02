@@ -1,0 +1,8 @@
+@media screen and (min-width:320px) and (max-width:1279px) {
+    .profile__info-editbutton-image{
+        width:7.5px;
+        height:7.5px;
+        padding:5.25px;
+        border:1px solid #ffffff;
+    }
+}
