@@ -1,0 +1,14 @@
+.popupimg__container{
+    display:flex;
+    flex-direction: column;
+    width:64%;
+    align-items: center;
+    align-content: center;
+    margin:auto;
+}
+
+@media screen and (min-width:320px) and (max-width:1279px) {
+    .popupimg__container{
+        width:75%;
+    }
+}

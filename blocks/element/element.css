@@ -9,6 +9,7 @@
     background-color:#ffffff;
     grid-template-columns:250px max-content;
     grid-template-rows:max-content max-content;
+    min-height: 282px;
 }
 
 .element:nth-child(3n){

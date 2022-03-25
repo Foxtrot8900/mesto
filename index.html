@@ -17,13 +17,40 @@
                     <img src="images/Closeicon.svg" alt="закрыть" class="popup__container-closeicon-button">
                 </button>
                 <h2 class="popup__container-title">Редактировать профиль</h2>
-                <form name="popup__container-form">
+                <form name="popup__container-form" class = "popup__container-form">
                     <input type="text" name="username" class="popup__input popup__input_field_name" value="Жак-Ив Кусто">
                     <input type="text" name="job" class="popup__input popup__input_field_job" value="Исследователь океана">
                     <button class="popup__container-button" type="submit">Сохранить</button>
                 </form>
             </div>
         </section>
+
+        <section class="popupcopy">
+            <div class="popupcopy__container">
+                <button class="popupcopy__container-closeicon" type="button">
+                    <img src="images/Closeicon.svg" alt="закрыть" class="popupcopy__container-closeicon-button">
+                </button>
+                <h2 class="popupcopy__container-title">Новое место</h2>
+                <form name="popupcopy__container-form" class = "popupcopy__container-form">
+                    <input type="text" name="username" class="popupcopy__input popupcopy__input_field_name" placeholder="Название">
+                    <input type="text" name="job" class="popupcopy__input popupcopy__input_field_job" placeholder="Ссылка на картинку">
+                    <button class="popupcopy__container-button" type="submit">Создать</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="popupimg">
+            <div class = "popupimg__container">
+                <div class = "popupimg__imagecontainer">
+                    <button class="popupimg__closeicon" type="button">
+                        <img src="images/Closeicon.svg" alt="закрыть" class="popupimg__closeicon-button">
+                      </button>
+                <img src =" " class="popupimg__image" alt="фото">
+                <p class="popupimg__title"></p>
+            </div>
+            </div>
+        </section>
+        
         <section class="profile">
             <img class="profile__avatar" src="images/image.jpg" alt="Жак-Ив Кусто">
             <div class="profile__info">
@@ -38,49 +65,19 @@
             </button>
         </section>
         <section class="elements">
-            <div class="element">
-                    <img class="element__rectangle-image" src="images/Photo1.jpg" alt="Карачаевск">
-                    <h2 class="element__rectangle-title">Карачаевск</h2>
-                    <button class="element__rectangle-heart" type="button">
-                        <img src="./images/heart.svg" alt="лайк">
-                    </button>
-            </div>
-            <div class="element">
-                    <img class="element__rectangle-image" src="images/photo2.jpg" alt="Гора Эльбрус">
-                    <h2 class="element__rectangle-title">Гора Эльбрус</h2>
-                    <button class="element__rectangle-heart" type="button">
-                        <img src="./images/heart.svg" alt="лайк">
-                    </button>
-            </div>
-            <div class="element">
-                    <img class="element__rectangle-image" src="images/photo3.jpg" alt="Домбай">
-                    <h2 class="element__rectangle-title">Домбай</h2>
-                    <button class="element__rectangle-heart" type="button">
-                        <img src="./images/heart.svg" alt="лайк">
-                    </button>
-            </div>
-            <div class="element">
-                    <img class="element__rectangle-image" src="images/photo4.jpg" alt="Гора Эльбрус">
-                    <h2 class="element__rectangle-title">Гора Эльбрус</h2>
-                    <button class="element__rectangle-heart" type="button">
-                        <img src="./images/heart.svg" alt="лайк">
-                    </button>
-            </div>
-            <div class="element">
-                    <img class="element__rectangle-image" src="images/photo5.jpg" alt="Домбай">
-                    <h2 class="element__rectangle-title">Домбай</h2>
-                    <button class="element__rectangle-heart" type="button">
-                        <img src="./images/heart.svg" alt="лайк">
-                    </button>
-            </div>
-            <div class="element">
-                    <img class="element__rectangle-image" src="images/photo6.jpg" alt="Карачаево-Черкессия">
-                    <h2 class="element__rectangle-title">Карачаево-Черкессия</h2>
-                    <button class="element__rectangle-heart" type="button">
-                        <img src="./images/heart.svg" alt="лайк">
-                    </button>
-            </div>
         </section>
+        <template id="user">
+            <div class="element">
+                <button class="element__deleteicon" type="button">
+                    <img src="./images/deleteicon.svg" alt="удалить" class="element__deleteicon-image">
+                </button>
+                    <img class="element__rectangle-image" src="" alt="Фото">
+                    <h2 class="element__rectangle-title"></h2>
+                    <button class="element__rectangle-heart" type="button">
+                        <img src="./images/heart.svg" alt="лайк" class = "element__rectangle-heartimg">
+                    </button>
+            </div>
+        </template>
     </main>
     <footer class="footer">
         <p class="footer__title">© 2020 Mesto Russia</p>
