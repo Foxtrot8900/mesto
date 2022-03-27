@@ -6,10 +6,13 @@
     padding:0 0 12px;
     font-size: 14px;
     line-height: 17px;
-    color:#C4C4C4;
     font-family: 'Inter','Arial','sans-serif';
     font-style: normal;
     font-weight: normal;
+}
+
+.popupcopy__input::placeholder{
+    color:#000000;
 }
 
 @media screen and (min-width:320px) and (max-width:1279px) {
