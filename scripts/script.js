@@ -12,11 +12,11 @@ const profileForm = document.querySelector('.popup__container-form');
 const profileCloseButton = document.querySelector('.popup__container-closeicon');
 const cardCloseButton = document.querySelector('.popupcopy__container-closeicon');
 const elements= document.querySelector('.elements');
-const formelementCopy = document.querySelector('.popupcopy__container-form');
+const formElementCopy = document.querySelector('.popupcopy__container-form');
 const overlayPopup = document.querySelector('.popupimg');
 const overlayCloseIcon = document.querySelector('.popupimg__closeicon');
 const picturePlace = document.querySelector('.popupimg__image');
-const CaptionPlace = document.querySelector('.popupimg__title');
+const captionPlace = document.querySelector('.popupimg__title');
 const initialCards = [
   {
     name: 'Архыз',
@@ -62,10 +62,10 @@ cardCloseButton.addEventListener('click',function(){closePopup(cardPopup);});
 
 function handleProfileFormSubmit (evt){
   evt.preventDefault();
-  let namevalue = nameInput.value;
-  let jobvalue = jobInput.value;
-  name.textContent=namevalue;
-  job.textContent=jobvalue;
+  const nameValue = nameInput.value;
+  const jobValue = jobInput.value;
+  name.textContent=nameValue;
+  job.textContent=jobValue;
   closePopup(profilePopup);
 }
 
@@ -80,32 +80,26 @@ function createCard(item){
   cardElement.querySelector('.element__rectangle-title').textContent=item.name;
   overlayImage.src=item.link;
   overlayImage.alt=item.name
+
   function like(){
-    if(heart.classList.contains('element__rectangle-heart_active') === true){
-      heart.classList.remove('element__rectangle-heart_active');
-    }
-     else{
-    heart.classList.add('element__rectangle-heart_active');
-    }
+    heart.classList.toggle('element__rectangle-heart_active');
   }
   heart.addEventListener('click',like);
 
   function deleteCard(){
-       (deleteIcon.parentElement).parentElement.remove();
+       cardElement.remove();
   }
 
   deleteIcon.addEventListener('click',deleteCard);
 
  function openImage(){
-    const picture = overlayImage.src;
-    const Caption = overlayImage.nextElementSibling.textContent;
-    picturePlace.src = picture;
-    CaptionPlace.textContent = Caption;
+    picturePlace.src = item.link;
+    picturePlace.alt = item.name;
+    captionPlace.textContent = item.name
     openPopup(overlayPopup);
   }
 
   overlayImage.addEventListener('click',openImage);
-  overlayCloseIcon.addEventListener('click',function(){closePopup(overlayPopup);});
   return cardElement;
 }
 
@@ -120,18 +114,17 @@ for (let i=0; i<= initialCards.length - 1;i++){
 
 function submitAddCard(evt){
   evt.preventDefault();
-  const addedCard = [ 
+  const addedCard =
     {
       name : cardName.value,
       link : cardImage.value
-    }
-  ];
-  const templateElement = createCard(addedCard[0]);
+    };
+
+  const templateElement = createCard(addedCard);
   elements.prepend(templateElement);
   closePopup(cardPopup);
-  cardName.value='';
-  cardImage.value='';
+  formElementCopy.reset();
 
 }
-
-formelementCopy.addEventListener('submit',submitAddCard);
+overlayCloseIcon.addEventListener('click',function(){closePopup(overlayPopup);});
+formElementCopy.addEventListener('submit',submitAddCard);
