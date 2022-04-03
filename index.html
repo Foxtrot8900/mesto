@@ -17,10 +17,14 @@
                     <img src="images/Closeicon.svg" alt="закрыть" class="popup__container-closeicon-button">
                 </button>
                 <h2 class="popup__container-title">Редактировать профиль</h2>
-                <form name="popup__container-form" class = "popup__container-form">
-                    <input type="text" name="username" class="popup__input popup__input_field_name" value="Жак-Ив Кусто">
-                    <input type="text" name="job" class="popup__input popup__input_field_job" value="Исследователь океана">
-                    <button class="popup__container-button" type="submit">Сохранить</button>
+                <form name="userInfo" class = "popup__container-form" novalidate>
+                    <fieldset class="popup__form-info">
+                    <input id="popup__input-nickname" type="text" name="nickname" class="popup__input popup__input_field_name" value="Жак-Ив Кусто" minlength="2" maxlength="40" required>
+                    <span class="popup__input-error popup__input-nickname-error"></span>
+                    <input id="popup__input-job" type="text" name="job" class="popup__input popup__input_field_job" value="Исследователь океана" minlength="2" maxlength="200" required>
+                    <span class="popup__input-error popup__input-job-error"></span>  
+                    <button class="popup__container-button popup__container-button_disabled" type="submit" disabled>Сохранить</button>
+                    </fieldset>
                 </form>
             </div>
         </section>
@@ -31,10 +35,14 @@
                     <img src="images/Closeicon.svg" alt="закрыть" class="popup__container-closeicon-button">
                 </button>
                 <h2 class="popupcopy__container-title">Новое место</h2>
-                <form name="popupcopy__container-form" class = "popupcopy__container-form">
-                    <input type="text" name="username" class="popupcopy__input popupcopy__input_field_name" placeholder="Название">
-                    <input type="text" name="job" class="popupcopy__input popupcopy__input_field_job" placeholder="Ссылка на картинку">
-                    <button class="popupcopy__container-button" type="submit">Создать</button>
+                <form name="imageInfo" class ="popupcopy__container-form" novalidate>
+                    <fieldset class="popup__form-info">
+                    <input  id="popup__input-caption" type="text" name="caption" class="popup__input popupcopy__input popup__input_field_name popupcopy__input_field_name" placeholder="Название" minlength="2" maxlength="30" required> 
+                    <span class="popup__input-error popup__input-caption-error"></span>
+                    <input id="popup__input-link" type="url" name="job" class="popup__input popupcopy__input popup__input_field_job popupcopy__input_field_job" placeholder="Ссылка на картинку" required>
+                    <span class="popup__input-error popup__input-link-error"></span>
+                    <button class="popup__container-button popupcopy__container-button popup__container-button_disabled" type="submit" disabled>Создать</button>
+                    </fieldset>
                 </form>
             </div>
         </section>
@@ -82,6 +90,8 @@
     <footer class="footer">
         <p class="footer__title">© 2020 Mesto Russia</p>
     </footer>
+    
     <script src="scripts/script.js"></script>
+    <script src="scripts/validate.js"></script> 
 </body>
 </html>

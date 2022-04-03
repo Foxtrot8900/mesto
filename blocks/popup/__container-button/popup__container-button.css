@@ -1,5 +1,5 @@
 .popup__container-button{
-    margin:18px 36px 37px;
+    margin:45px 36px 37px;
     width: 83%;
     background-color:#000000;
     border-radius: 2px;
@@ -8,6 +8,7 @@
     font-weight: normal;
     font-size: 18px;
     line-height: 22px;
+    box-sizing: border-box;
     text-align: center;
     color: #FFFFFF;
     min-height:50px;

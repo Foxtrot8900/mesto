@@ -48,6 +48,8 @@ const initialCards = [
 
 function openPopup(popup){
   popup.classList.add('popup_active');
+  document.addEventListener('keydown',closeByKey);
+  document.addEventListener('click',closeByOverlayClick);
 }
 
 buttonEdit.addEventListener('click', function(){openPopup(profilePopup);});
@@ -128,3 +130,19 @@ function submitAddCard(evt){
 }
 overlayCloseIcon.addEventListener('click',function(){closePopup(overlayPopup);});
 formElementCopy.addEventListener('submit',submitAddCard);
+
+function closeByKey(evt){
+  if(evt.code === 'Escape'){
+    closePopup(overlayPopup);
+    closePopup(cardPopup);
+    closePopup(profilePopup);
+  }
+}
+
+function closeByOverlayClick(evt){
+  if (evt.target.classList.contains('popup_active')){
+    closePopup(overlayPopup);
+    closePopup(cardPopup);
+    closePopup(profilePopup);
+  }
+}
