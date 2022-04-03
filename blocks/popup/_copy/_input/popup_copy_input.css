@@ -1,4 +1,4 @@
-.popup_copy-input{
+.popup_copy_input{
     border:none;
     border-bottom: 1px solid rgba(0,0,0,0.2);
     padding:0 0 12px;
@@ -9,7 +9,7 @@
     font-weight: normal;
 }
 
-.popup_copy-input::placeholder{
+.popup_copy_input::placeholder{
     color:#000000;
 }
 
