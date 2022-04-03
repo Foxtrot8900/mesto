@@ -1,4 +1,4 @@
-.popupcopy__container-button{
+.popup_copy-container-button{
     margin:18px 36px 37px;
     width: 83%;
     background-color:#000000;
@@ -14,13 +14,13 @@
     transition:opacity 0.4s linear;   
 }
 
-.popupcopy__container-button:hover{
+.popup_copy-container-button:hover{
     opacity:0.8;
     cursor:pointer;
 }
 
 @media screen and (min-width:320px) and (max-width:1279px) {
-    .popupcopy__container-button{
+    .popup_copy-container-button{
         margin:15px 22px 25px;
         font-size: 14px;
         line-height: 17px;

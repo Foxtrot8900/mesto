@@ -1,4 +1,4 @@
-.popupimg__imagecontainer{
+.popup_image-imagecontainer{
     display: flex;
     flex-direction: column;
 }

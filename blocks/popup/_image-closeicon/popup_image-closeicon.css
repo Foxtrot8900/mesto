@@ -1,4 +1,4 @@
-.popupcopy__container-closeicon{
+.popup_image-closeicon{
     transition:opacity 0.4s linear;
     background-color: rgba(0,0,0,0);
     border:none;
@@ -6,17 +6,17 @@
     padding:0;
     width:32px;
     height: 32px;
-    margin-right:-40px;
     margin-top: -40px;
+    margin-right: -40px;
 }
 
-.popupcopy__container-closeicon:hover{
+.popup_image-closeicon:hover{
     opacity:0.6;
     cursor:pointer;
 }
 
 @media screen and (min-width:320px) and (max-width:1279px) {
-    .popupcopy__container-closeicon{
+    .popup_image-closeicon{
         margin-top:-36px;
         margin-right:0;
     }   

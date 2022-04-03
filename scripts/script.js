@@ -1,22 +1,23 @@
 const buttonEdit = document.querySelector('.profile__info-editbutton');
 const profilePopup = document.querySelector('.popup-profile');
-const cardPopup = document.querySelector('.popupcopy');
+const cardPopup = document.querySelector('.popup_copy');
 const addButton = document.querySelector('.profile__addbutton');
 const nameInput = document.querySelector('.popup__input_field_name');
 const jobInput = document.querySelector('.popup__input_field_job');
-const cardName = document.querySelector('.popupcopy__input_field_name');
-const cardImage = document.querySelector('.popupcopy__input_field_job');
+const cardName = document.querySelector('.popup_copy-input-field-name');
+const cardImage = document.querySelector('.popup_copy-input-field-job');
 const name = document.querySelector('.profile__info-title');
 const job = document.querySelector('.profile__info-subtitle');
 const profileForm = document.querySelector('.popup__container-form');
 const profileCloseButton = document.querySelector('.popup__container-closeicon');
-const cardCloseButton = document.querySelector('.popupcopy__container-closeicon');
+const cardCloseButton = document.querySelector('.popup_copy-container-closeicon');
 const elements= document.querySelector('.elements');
-const formElementCopy = document.querySelector('.popupcopy__container-form');
-const overlayPopup = document.querySelector('.popupimg');
-const overlayCloseIcon = document.querySelector('.popupimg__closeicon');
-const picturePlace = document.querySelector('.popupimg__image');
-const captionPlace = document.querySelector('.popupimg__title');
+const formElementCopy = document.querySelector('.popup_copy-container-form');
+const overlayPopup = document.querySelector('.popup_image');
+const overlayCloseIcon = document.querySelector('.popup_image-closeicon');
+const picturePlace = document.querySelector('.popup_image-picture');
+const captionPlace = document.querySelector('.popup_image-title');
+const popupList = document.querySelectorAll('.popup');
 const initialCards = [
   {
     name: 'Архыз',
@@ -45,22 +46,26 @@ const initialCards = [
 ]; 
 
 
-
 function openPopup(popup){
   popup.classList.add('popup_active');
   document.addEventListener('keydown',closeByKey);
   document.addEventListener('click',closeByOverlayClick);
+  disablePopupButton();
 }
 
 buttonEdit.addEventListener('click', function(){openPopup(profilePopup);});
 addButton.addEventListener('click', function(){openPopup(cardPopup);});
 
-function closePopup(popup){
+function closePopup(){
+ popupList.forEach(popup => {
   popup.classList.remove('popup_active');
+  document.removeEventListener('keydown',closeByKey);
+  document.removeEventListener('click',closeByOverlayClick);
+});
 }
 
-profileCloseButton.addEventListener('click',function(){closePopup(profilePopup);});
-cardCloseButton.addEventListener('click',function(){closePopup(cardPopup);});
+profileCloseButton.addEventListener('click',closePopup);
+cardCloseButton.addEventListener('click',closePopup);
 
 function handleProfileFormSubmit (evt){
   evt.preventDefault();
@@ -128,21 +133,23 @@ function submitAddCard(evt){
   formElementCopy.reset();
 
 }
-overlayCloseIcon.addEventListener('click',function(){closePopup(overlayPopup);});
+overlayCloseIcon.addEventListener('click',closePopup);
 formElementCopy.addEventListener('submit',submitAddCard);
 
 function closeByKey(evt){
   if(evt.code === 'Escape'){
-    closePopup(overlayPopup);
-    closePopup(cardPopup);
-    closePopup(profilePopup);
+    closePopup();
   }
 }
 
 function closeByOverlayClick(evt){
   if (evt.target.classList.contains('popup_active')){
-    closePopup(overlayPopup);
-    closePopup(cardPopup);
-    closePopup(profilePopup);
+   closePopup();
   }
+}
+
+function disablePopupButton(){
+  const buttonElement = cardPopup.querySelector('.popup__container-button');
+  buttonElement.setAttribute('disabled', 'disabled'); 
+  buttonElement.classList.add('popup__container-button_disabled');
 }

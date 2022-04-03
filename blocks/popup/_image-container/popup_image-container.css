@@ -1,4 +1,4 @@
-.popupimg__container{
+.popup_image-container{
     display:flex;
     flex-direction: column;
     width:64%;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (min-width:320px) and (max-width:1279px) {
-    .popupimg__container{
+    .popup_image-container{
         width:75%;
     }
 }
