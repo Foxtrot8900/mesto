@@ -1,6 +1,6 @@
 const buttonEdit = document.querySelector('.profile__info-editbutton');
 const profilePopup = document.querySelector('.popup-profile');
-const cardPopup = document.querySelector('.popup__copy');
+const cardPopup = document.querySelector('.popup-copy');
 const addButton = document.querySelector('.profile__addbutton');
 const nameInput = document.querySelector('.popup__input_field_name');
 const jobInput = document.querySelector('.popup__input_field_job');
@@ -13,7 +13,7 @@ const profileCloseButton = document.querySelector('.popup__container-closeicon')
 const cardCloseButton = document.querySelector('.popup__copy-container-closeicon');
 const elements= document.querySelector('.elements');
 const formElementCopy = document.querySelector('.popup__copy-container-form');
-const overlayPopup = document.querySelector('.popup__image');
+const overlayPopup = document.querySelector('.popup-image');
 const overlayCloseIcon = document.querySelector('.popup__image-closeicon');
 const picturePlace = document.querySelector('.popup__image-picture');
 const captionPlace = document.querySelector('.popup__image-title');
