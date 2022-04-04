@@ -1,4 +1,4 @@
-.popup__copy_container-closeicon{
+.popup__copy-container-closeicon{
     transition:opacity 0.4s linear;
     background-color: rgba(0,0,0,0);
     border:none;
@@ -10,13 +10,13 @@
     margin-top: -40px;
 }
 
-.popup__copy_container-closeicon:hover{
+.popup__copy-container-closeicon:hover{
     opacity:0.6;
     cursor:pointer;
 }
 
 @media screen and (min-width:320px) and (max-width:1279px) {
-    .popup__copy_container-closeicon{
+    .popup__copy-container-closeicon{
         margin-top:-36px;
         margin-right:0;
     }   
