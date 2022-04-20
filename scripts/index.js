@@ -1,3 +1,5 @@
+import { Card } from "./card.js";
+import {FormValidator} from "./FormValidator.js";
 const buttonEdit = document.querySelector('.profile__info-editbutton');
 const profilePopup = document.querySelector('.popup-profile');
 const cardPopup = document.querySelector('.popup-card');
@@ -15,9 +17,21 @@ const elements= document.querySelector('.elements');
 const formElementCopy = cardPopup.querySelector('.popup__container-form');
 const overlayPopup = document.querySelector('.popup-image');
 const overlayCloseIcon = overlayPopup.querySelector('.popup__container-closeicon');
-const picturePlace = document.querySelector('.popup-image__picture');
-const captionPlace = document.querySelector('.popup-image__title');
 const popupList = document.querySelectorAll('.popup');
+const popupImage = document.querySelector('.popup-image__picture');
+const popupCaption = document.querySelector('.popup-image__title');
+const selector = document.querySelector('#user').content;
+const validationSettings = {
+  formElement: '.popup__form-info',
+  inputElement: '.popup__input',
+  buttonElement: '.popup__container-button',
+  inactiveButtonClass: 'popup__container-button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active',
+  errorText:'.popup__input-error'
+}; 
+const cardValidation = new FormValidator(validationSettings, cardPopup);
+const profileValidation = new FormValidator(validationSettings, profilePopup);
 const initialCards = [
   {
     name: 'Архыз',
@@ -46,6 +60,10 @@ const initialCards = [
 ]; 
 
 
+buttonEdit.addEventListener('click', function(){openPopup(profilePopup);});
+addButton.addEventListener('click', function(){openPopup(cardPopup);});
+
+
 function openPopup(popup){
   popup.classList.add('popup_active');
   document.addEventListener('keydown',closeByKey);
@@ -53,16 +71,14 @@ function openPopup(popup){
   disablePopupButton();
 }
 
-buttonEdit.addEventListener('click', function(){openPopup(profilePopup);});
-addButton.addEventListener('click', function(){openPopup(cardPopup);});
-
 function closePopup(){
- popupList.forEach(popup => {
-  popup.classList.remove('popup_active');
-  document.removeEventListener('keydown',closeByKey);
-  document.removeEventListener('click',closeByOverlayClick);
-});
-}
+  popupList.forEach(popup => {
+   popup.classList.remove('popup_active');
+   document.removeEventListener('keydown',closeByKey);
+   document.removeEventListener('click',closeByOverlayClick);
+ });
+ }
+
 
 profileCloseButton.addEventListener('click',closePopup);
 cardCloseButton.addEventListener('click',closePopup);
@@ -78,7 +94,7 @@ function handleProfileFormSubmit (evt){
 
 profileForm.addEventListener('submit',handleProfileFormSubmit);
 
-function createCard(item){
+/*function createCard(item){
   const card = document.querySelector('#user').content;
   const cardElement = card.querySelector('.element').cloneNode(true);
   const heart = cardElement.querySelector('.element__rectangle-heartimg');
@@ -108,15 +124,34 @@ function createCard(item){
 
   overlayImage.addEventListener('click',openImage);
   return cardElement;
-}
+}*/
 
-function addOnLoad (obj){
+/*function addOnLoad (obj){
   const templateElement = createCard(obj);
   elements.append(templateElement);
 }
 
 for (let i=0; i<= initialCards.length - 1;i++){
   addOnLoad(initialCards[i]);
+}*/
+
+ /*function openImage(){
+  picturePlace.src = item.link;
+  picturePlace.alt = item.name;
+  captionPlace.textContent = item.name
+  openPopup(overlayPopup);
+}*/
+
+
+
+function createCard(data) {
+  const card = new Card (data, selector);
+  const cardElement = card.generateCard();
+  return cardElement;
+}
+
+function renderCard(data) {
+  elements.prepend(createCard(data));
 }
 
 function submitAddCard(evt){
@@ -136,6 +171,13 @@ function submitAddCard(evt){
 overlayCloseIcon.addEventListener('click',closePopup);
 formElementCopy.addEventListener('submit',submitAddCard);
 
+export function openImage(link, name) {
+  popupImage.src = link;
+  popupImage.alt = name;
+  popupCaption.textContent = name;
+  openPopup(overlayPopup);
+}
+
 function closeByKey(evt){
   if(evt.code === 'Escape'){
     closePopup();
@@ -153,3 +195,8 @@ function disablePopupButton(){
   buttonElement.setAttribute('disabled', 'disabled'); 
   buttonElement.classList.add('popup__container-button_disabled');
 }
+
+
+cardValidation.enableValidation();
+profileValidation.enableValidation();
+initialCards.forEach(data => renderCard(data));
