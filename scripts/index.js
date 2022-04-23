@@ -1,5 +1,6 @@
 import { Card } from "./card.js";
 import {FormValidator} from "./FormValidator.js";
+import { initialCards } from "./utils.js";
 const buttonEdit = document.querySelector('.profile__info-editbutton');
 const profilePopup = document.querySelector('.popup-profile');
 const cardPopup = document.querySelector('.popup-card');
@@ -32,32 +33,7 @@ const validationSettings = {
 }; 
 const cardValidation = new FormValidator(validationSettings, cardPopup);
 const profileValidation = new FormValidator(validationSettings, profilePopup);
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg"
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-]; 
+
 
 
 buttonEdit.addEventListener('click', function(){openPopup(profilePopup);});
@@ -65,10 +41,12 @@ addButton.addEventListener('click', function(){openPopup(cardPopup);});
 
 
 function openPopup(popup){
+  resetDataOnPopup();
   popup.classList.add('popup_active');
   document.addEventListener('keydown',closeByKey);
   document.addEventListener('click',closeByOverlayClick);
-  disablePopupButton();
+  cardValidation.resetPopupForm();
+  profileValidation.resetPopupForm();
 }
 
 function closePopup(){
@@ -83,66 +61,25 @@ function closePopup(){
 profileCloseButton.addEventListener('click',closePopup);
 cardCloseButton.addEventListener('click',closePopup);
 
+function resetDataOnPopup(){
+  nameInput.value = name.textContent;
+  jobInput.value = job.textContent;
+}
+
 function handleProfileFormSubmit (evt){
   evt.preventDefault();
   const nameValue = nameInput.value;
   const jobValue = jobInput.value;
-  name.textContent=nameValue;
-  job.textContent=jobValue;
+  if (nameValue !== name.textContent) {
+    name.textContent = nameValue;
+  }
+  if (jobValue !== job.textContent) {
+    job.textContent = jobValue;
+  }
   closePopup(profilePopup);
 }
 
 profileForm.addEventListener('submit',handleProfileFormSubmit);
-
-/*function createCard(item){
-  const card = document.querySelector('#user').content;
-  const cardElement = card.querySelector('.element').cloneNode(true);
-  const heart = cardElement.querySelector('.element__rectangle-heartimg');
-  const deleteIcon = cardElement.querySelector('.element__deleteicon-image');
-  const overlayImage = cardElement.querySelector('.element__rectangle-image');
-  cardElement.querySelector('.element__rectangle-title').textContent=item.name;
-  overlayImage.src=item.link;
-  overlayImage.alt=item.name
-
-  function like(){
-    heart.classList.toggle('element__rectangle-heart_active');
-  }
-  heart.addEventListener('click',like);
-
-  function deleteCard(){
-       cardElement.remove();
-  }
-
-  deleteIcon.addEventListener('click',deleteCard);
-
- function openImage(){
-    picturePlace.src = item.link;
-    picturePlace.alt = item.name;
-    captionPlace.textContent = item.name
-    openPopup(overlayPopup);
-  }
-
-  overlayImage.addEventListener('click',openImage);
-  return cardElement;
-}*/
-
-/*function addOnLoad (obj){
-  const templateElement = createCard(obj);
-  elements.append(templateElement);
-}
-
-for (let i=0; i<= initialCards.length - 1;i++){
-  addOnLoad(initialCards[i]);
-}*/
-
- /*function openImage(){
-  picturePlace.src = item.link;
-  picturePlace.alt = item.name;
-  captionPlace.textContent = item.name
-  openPopup(overlayPopup);
-}*/
-
-
 
 function createCard(data) {
   const card = new Card (data, selector);
@@ -190,11 +127,7 @@ function closeByOverlayClick(evt){
   }
 }
 
-function disablePopupButton(){
-  const buttonElement = cardPopup.querySelector('.popup__container-button');
-  buttonElement.setAttribute('disabled', 'disabled'); 
-  buttonElement.classList.add('popup__container-button_disabled');
-}
+
 
 
 cardValidation.enableValidation();

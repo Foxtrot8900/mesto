@@ -36,6 +36,7 @@ export class Card{
 
     this._card.querySelector('.element__deleteicon-image').addEventListener('click', () =>{
       this._card.remove();
+      this._element=null;
     });
 
     this._cardImage.addEventListener('click',() =>{

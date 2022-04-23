@@ -14,7 +14,6 @@
 
 .popup__input:invalid{
     outline: none;
-    border-bottom: 1px solid #ff0000;    
 }
 
 .popup__input:focus{

@@ -5,4 +5,10 @@
     grid-row: 1/2;
     height: 282px;
     object-fit: cover;
+    transition:opacity 0.4s linear;
+}
+
+.element__rectangle-image:hover{
+    opacity:0.5;
+    cursor:pointer;
 }

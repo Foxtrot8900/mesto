@@ -27,24 +27,27 @@ export class FormValidator {
   
     _checkValidity(formElement, inputElement, errorClass, inputErrorClass) {
       const isInputNotValid = !inputElement.validity.valid;
-  
       if (isInputNotValid) {
         const errorMessage = inputElement.validationMessage;
         this._showError(formElement, inputElement, errorMessage, errorClass, inputErrorClass);
       } else {
         this._hideError(formElement, inputElement, errorClass, inputErrorClass);
       }
+
     }
   
-    _toggleButtonState(inputList, buttonElement, inactiveButtonClass) {
+    _toggleButtonState(inputList, submitButtonElement, inactiveButtonClass) {
       const hasInvalidInput = inputList.some((inputElement) => !inputElement.validity.valid);
   
       if (hasInvalidInput) {
-        buttonElement.classList.add(inactiveButtonClass);
-        buttonElement.setAttribute('disabled', true);
+       
+        submitButtonElement.classList.add(inactiveButtonClass);
+        submitButtonElement.setAttribute('disabled', true);
+        
       } else {
-        buttonElement.classList.remove(inactiveButtonClass);
-        buttonElement.removeAttribute('disabled');
+        
+        submitButtonElement.classList.remove(inactiveButtonClass);
+        submitButtonElement.removeAttribute('disabled');
       }
     }
   
@@ -56,7 +59,6 @@ export class FormValidator {
         errorClass } = validationObj;
       const inputList = Array.from(formElement.querySelectorAll(inputElement));
       const submitButtonElement = formElement.querySelector(buttonElement);
-  
       const inputListIterator = (inputElement) => {
         const handleInput = () => {
           this._checkValidity(formElement, inputElement, errorClass, inputErrorClass);
@@ -70,7 +72,7 @@ export class FormValidator {
     }
   
     enableValidation() {
-      this._formElement.addEventListener('submit', (e) => e.preventDefault());
+      
       this._setEventListeners(this._formElement, this._validationSettings);
     }
   
@@ -84,5 +86,6 @@ export class FormValidator {
       this._inputs.forEach((input) => input.classList.remove(this._validationSettings.inputErrorClass));
       this._setDisabledOnSubmitButton();
     };
+
   }
   
