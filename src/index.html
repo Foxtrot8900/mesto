@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./pages/index.css" rel="stylesheet">
   <title>Место</title>
 </head>
 <body class="page">
@@ -12,29 +11,29 @@
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__avatar" src="images/image.jpg" alt="Жак-Ив Кусто">
+            <img class="profile__avatar" src="<%=require('./images/image.jpg')%>" alt="Жак-Ив Кусто">  
             <div class="profile__info">
                 <h1 class="profile__info-title">Жак-Ив Кусто</h1>
                 <p class="profile__info-subtitle">Исследователь океана</p>
                 <button class="profile__info-editbutton" type="button">
-                    <img src="images/editbutton.svg" alt="иконка" class="profile__info-editbutton-image">
+                    <img src="<%=require('./images/editbutton.svg')%>" alt="иконка" class="profile__info-editbutton-image">
                 </button>
             </div>
             <button class="profile__addbutton" type="button">
-                <img src="images/addbutton.svg" alt="иконка">
+                <img src="<%=require('./images/addbutton.svg')%>" alt="иконка">
             </button>
         </section>
         <section class="elements">
         </section>
-        <template id="user">
+        <template id="user" class="user">
             <div class="element">
                 <button class="element__deleteicon" type="button">
-                    <img src="./images/deleteicon.svg" alt="удалить" class="element__deleteicon-image">
+                    <img src="<%=require('./images/deleteicon.svg')%>" alt="удалить" class="element__deleteicon-image">
                 </button>
                     <img class="element__rectangle-image" src="images/Closeicon.svg" alt="Фото">
                     <h2 class="element__rectangle-title"></h2>
                     <button class="element__rectangle-heart" type="button">
-                        <img src="./images/heart.svg" alt="лайк" class = "element__rectangle-heartimg">
+                        <img src="<%=require('./images/heart.svg')%>" alt="лайк" class = "element__rectangle-heartimg">
                     </button>
             </div>
         </template>
@@ -45,7 +44,7 @@
     <section class="popup popup-profile">
         <div class="popup__container">
             <button class="popup__container-closeicon" type="button">
-                <img src="images/Closeicon.svg" alt="закрыть" class="popup__container-closeicon-button">
+                <img src="<%=require('./images/Closeicon.svg')%>" alt="закрыть" class="popup__container-closeicon-button"> 
             </button>
             <h2 class="popup__container-title">Редактировать профиль</h2>
             <form name="userInfo" class = "popup__container-form" novalidate>
@@ -63,7 +62,7 @@
     <section class="popup popup-card">
         <div class="popup__container">
             <button class="popup__container-closeicon" type="button">
-                <img src="images/Closeicon.svg" alt="закрыть" class="popup__container-closeicon-button">
+                <img src="<%=require('./images/Closeicon.svg')%>" alt="закрыть" class="popup__container-closeicon-button">  
             </button> 
             <h2 class="popup__container-title">Новое место</h2>
             <form name="imageInfo" class ="popup__container-form" novalidate>
@@ -82,13 +81,13 @@
         <div class = "popup-image__container">
             <div class = "popup-image__flexcontainer">
                 <button class="popup__container-closeicon" type="button">
-                    <img src="images/Closeicon.svg" alt="закрыть" class="popup__container-closeicon-button">
+                    <img src="<%=require('./images/Closeicon.svg')%>" alt="закрыть" class="popup__container-closeicon-button"> 
                   </button>
             <img src =" " class="popup-image__picture" alt="фото">
             <p class="popup-image__title"></p>
         </div>
         </div>
     </section>
-    <script type="module" src="scripts/index.js"></script>
+    <script type="module" src="./index.js"></script>
 </body>
 </html>
