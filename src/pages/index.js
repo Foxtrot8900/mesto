@@ -1,10 +1,10 @@
-import './pages/index.css';
-import { Card } from "./scripts/components/card.js";
-import {FormValidator} from "./scripts/components/FormValidator.js";
-import PopupWithImage from './scripts/components/PopupWithImage.js';
-import PopupWithForm from './scripts/components/PopupWithForm.js';
-import {Section} from './scripts/components/section.js';
-import {UserInfo} from './scripts/components/UserInfo.js';
+import './index.css';
+import { Card } from "../components/card.js";
+import {FormValidator} from "../components/FormValidator.js";
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import {Section} from '../components/section.js';
+import {UserInfo} from '../components/UserInfo.js';
 import{
   buttonEdit,
   profilePopup,
@@ -14,7 +14,7 @@ import{
   jobInput,
   validationSettings,
   initialCards
-} from './scripts/utils/constants.js'
+} from '../components/constants.js'
 
 
 
@@ -30,6 +30,7 @@ const userInfo = new UserInfo({nameSelector:'.profile__info-title',
 const popupTypeCard = new PopupWithForm({ handleSubmit: (inputsValues) => {
     const card = createCard(inputsValues.caption, inputsValues.job, '.user');
     cardsList.addItem(card);
+    cardValidation.resetPopupForm();
   }
 }, '.popup-card');
 
@@ -72,6 +73,7 @@ buttonEdit.addEventListener('click', () => {
 // popup Card Form
 addButton.addEventListener('click', () => {
   popupTypeCard.open();
+ cardValidation.resetPopupForm();
 });
 
 popupWithImage.setEventListeners();
