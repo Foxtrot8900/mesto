@@ -18,6 +18,10 @@ export default class Card {
     this._handleCardClick = handleCardClick;
     this._handleDeleteCard = handleDeleteCard;
     this._handleLikeCard = handleLikeCard;
+    this._element = this._getTemplate();
+    this._likeButton = this._element.querySelector('.element__rectangle-heartimg');
+    this._likeCount = this._element.querySelector('.element__rectangle-count');
+    this._deleteIcon = this._element.querySelector('.element__deleteicon-image');
   }
  
   _getTemplate () {
@@ -31,15 +35,13 @@ export default class Card {
 
   
   generateCard() {
-    this._element = this._getTemplate();
-    this._likeButton = this._element.querySelector('.element__rectangle-heartimg');
     const image = this._element.querySelector('.element__rectangle-image');
     image.src = this._link;
     image.alt = this._name;
     this._element.querySelector('.element__rectangle-title').textContent = this._name;
     this.setLikes();
     if (this._owner._id !== this._userId) {
-      this._element.querySelector('.element__deleteicon-image').remove();
+      this._deleteIcon.remove();
     }
     this._setEventlisteners();
     return this._element;
@@ -48,14 +50,10 @@ export default class Card {
 
  
   _setEventlisteners() {
-    this._element.querySelector('.element__rectangle-heartimg').addEventListener('click', () => this._likeCard());
-
-  
+    this._likeButton.addEventListener('click', () => this._likeCard());
     this._element.querySelector('.element__rectangle-image').addEventListener('click', () => this._handleCardClick(this._link, this._name));
-
-   
-    if (this._element.querySelector('.element__deleteicon-image')) {
-        this._element.querySelector('.element__deleteicon-image').addEventListener('click', () => this._handleDelete());
+    if (this._deleteIcon) {
+        this._deleteIcon.addEventListener('click', () => this._handleDelete());
       }
   }
 
@@ -85,20 +83,17 @@ export default class Card {
   }
 
   setLikes(likes) {
-    const likeCount = this._element.querySelector('.element__rectangle-count');
-    const likeButton = this._element.querySelector('.element__rectangle-heartimg');
-
     if (likes) {
       this._likes = likes;
       this._isLiked = this._checkIsLiked();
     }
 
-    likeCount.textContent = this._likes.length;
+    this._likeCount.textContent = this._likes.length;
 
     if (this._isLiked) {
-      likeButton.classList.add('element__rectangle-heart_active');
+      this._likeButton.classList.add('element__rectangle-heart_active');
     } else {
-      likeButton.classList.remove('element__rectangle-heart_active');
+      this._likeButton.classList.remove('element__rectangle-heart_active');
     }
   }
 

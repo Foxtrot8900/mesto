@@ -13,13 +13,7 @@ export default class Api {
       method: 'GET',
       headers: this._headers,
     })
-    .then(res => {
-      if (res.ok) return res.json();
-      return res.json()
-      .then(res => {
-        throw new Error(res.message);
-      });
-    });
+    .then(this._checkResponse);
   }
 
   
@@ -34,13 +28,7 @@ export default class Api {
         about: job
       })
     })
-    .then(res => {
-      if (res.ok) return res.json();
-      return res.json()
-      .then(res => {
-        throw new Error(res.message);
-      });
-    });
+    .then(this._checkResponse);
   }
 
   
@@ -54,13 +42,7 @@ export default class Api {
         avatar: link
       })
     })
-    .then(res => {
-      if (res.ok) return res.json();
-      return res.json()
-      .then(res => {
-        throw new Error(res.message);
-      });
-    });
+    .then(this._checkResponse);
   }
 
   
@@ -71,13 +53,7 @@ export default class Api {
       method: 'GET',
       headers: this._headers,
     })
-    .then(res => {
-      if (res.ok) return res.json();
-      return res.json()
-      .then(res => {
-        throw new Error(res.message);
-      });
-    });
+    .then(this._checkResponse);
   }
 
  
@@ -92,13 +68,7 @@ export default class Api {
         link
       })
     })
-    .then(res => {
-      if (res.ok) return res.json();
-      return res.json()
-      .then(res => {
-        throw new Error(res.message);
-      });
-    });
+    .then(this._checkResponse);
   }
 
  
@@ -109,13 +79,7 @@ export default class Api {
       method: 'DELETE',
       headers: this._headers
     })
-    .then(res => {
-      if (res.ok) return Promise.resolve();
-      return res.json()
-      .then(res => {
-        throw new Error(res.message);
-      });
-    });
+    .then(this._checkResponse);
   }
 
   
@@ -126,13 +90,7 @@ export default class Api {
       method: 'PUT',
       headers: this._headers
     })
-    .then(res => {
-      if (res.ok) return res.json();
-      return res.json()
-      .then(res => {
-        throw new Error(res.message);
-      });
-    })
+    .then(this._checkResponse)
     .then(res => {
       return res.likes;
     });
@@ -146,13 +104,7 @@ export default class Api {
       method: 'DELETE',
       headers: this._headers
     })
-    .then(res => {
-      if (res.ok) return res.json();
-      return res.json()
-      .then(res => {
-        throw new Error(res.message);
-      });
-    })
+    .then(this._checkResponse)
     .then(res => {
       return res.likes;
     });
@@ -166,4 +118,12 @@ export default class Api {
       return this._setLike(cardId);
     }
   }
+
+_checkResponse(res){
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Ошибка: ${res.status}`);
+}
+
 }
