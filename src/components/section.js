@@ -1,15 +1,23 @@
-export class Section {
-    constructor( { items, renderer}, selectorContainer ){
-        this._items = items;
-        this._renderer = renderer;
-        this._container = document.querySelector(selectorContainer);
-    }
+export default class Section {
 
-    renderItems() {
-        this._items.forEach((item) => this._renderer(item))
-    }
+  constructor(renderer, containerSelector) {
+    this._renderer = renderer;
+    this._container = document.querySelector(containerSelector);
+  }
 
-    addItem(element) {
-        this._container.prepend(element);
+  
+  renderItems(items) {
+    items.forEach(item => {
+      const element = this._renderer(item);
+      this.addItem(element);
+    })
+  }
+
+  addItem(item, isInversed = false) {
+    if (isInversed) {
+      this._container.prepend(item);
+    } else {
+      this._container.append(item);
     }
+  }
 }

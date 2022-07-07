@@ -41,3 +41,7 @@
 @import url(../blocks/popup/__container-button/_disabled/popup__container-button_disabled.css);
 @import url(../blocks/popup/__input/_field_job/popup__input_field_job.css);
 @import url(../blocks/popup/__input/_link/popup__input_link.css);
+@import url(../blocks/profile/__avatar-image/profile__avatar-image.css);
+@import url(../blocks/profile/__avatar-button/profile__avatar-button.css);
+@import url(../blocks/content/__element/content__element.css);
+@import url(../blocks/element/__rectangle-count/element__rectangle-count.css);

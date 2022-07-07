@@ -10,8 +10,13 @@
         <div class="header__logo"></div>
     </header>
     <main class="content">
-        <section class="profile">
-            <img class="profile__avatar" src="<%=require('./images/image.jpg')%>" alt="Жак-Ив Кусто">  
+        <section class="profile content__element">
+            <div class="profile__avatar">
+            <img class="profile__avatar-image" src="<%=require('./images/image.jpg')%>" alt="Жак-Ив Кусто">
+            <button class="profile__avatar-button"
+            type="button"
+            aria-label="Обновить аватар"></button>
+            </div>  
             <div class="profile__info">
                 <h1 class="profile__info-title">Жак-Ив Кусто</h1>
                 <p class="profile__info-subtitle">Исследователь океана</p>
@@ -30,11 +35,13 @@
                 <button class="element__deleteicon" type="button">
                     <img src="<%=require('./images/deleteicon.svg')%>" alt="удалить" class="element__deleteicon-image">
                 </button>
-                    <img class="element__rectangle-image" src="images/Closeicon.svg" alt="Фото">
+                    <img class="element__rectangle-image" src="#" alt="#">
                     <h2 class="element__rectangle-title"></h2>
                     <button class="element__rectangle-heart" type="button">
                         <img src="<%=require('./images/heart.svg')%>" alt="лайк" class = "element__rectangle-heartimg">
+                        <span class="element__rectangle-count"></span>
                     </button>
+                    
             </div>
         </template>
     </main>
@@ -47,9 +54,9 @@
                 <img src="<%=require('./images/Closeicon.svg')%>" alt="закрыть" class="popup__container-closeicon-button"> 
             </button>
             <h2 class="popup__container-title">Редактировать профиль</h2>
-            <form name="userInfo" class = "popup__container-form" novalidate>
+            <form name="profileEditPopupForm" class = "popup__container-form" novalidate>
                 <fieldset class="popup__form-info">
-                <input id="popup__input-nickname" type="text" name="nickname" class="popup__input popup__input_field_name" value="Жак-Ив Кусто" minlength="2" maxlength="40" required>
+                <input id="popup__input-nickname" type="text" name="name" class="popup__input popup__input_field_name" value="Жак-Ив Кусто" minlength="2" maxlength="40" required>
                 <span class="popup__input-error popup__input-nickname-error"></span>
                 <input id="popup__input-job" type="text" name="job" class="popup__input popup__input_field_job" value="Исследователь океана" minlength="2" maxlength="200" required>
                 <span class="popup__input-error popup__input-job-error"></span> 
@@ -65,11 +72,11 @@
                 <img src="<%=require('./images/Closeicon.svg')%>" alt="закрыть" class="popup__container-closeicon-button">  
             </button> 
             <h2 class="popup__container-title">Новое место</h2>
-            <form name="imageInfo" class ="popup__container-form" novalidate>
+            <form name="newCardPopupForm" class ="popup__container-form" novalidate>
                 <fieldset class="popup__form-info">
-                <input  id="popup__input-caption" type="text" name="caption" class="popup__input  popup__input_caption" placeholder="Название" minlength="2" maxlength="30" required> 
+                <input  id="popup__input-caption" type="text" name="name" class="popup__input  popup__input_caption" placeholder="Название" minlength="2" maxlength="30" required> 
                 <span class="popup__input-error popup__input-caption-error"></span>
-                <input id="popup__input-link" type="url" name="job" class="popup__input popup__input_link" placeholder="Ссылка на картинку" required>
+                <input id="popup__input-link" type="url" name="link" class="popup__input popup__input_link" placeholder="Ссылка на картинку" required>
                 <span class="popup__input-error popup__input-link-error"></span>
                 <button class="popup__container-button popup__container-button_disabled" type="submit" disabled>Создать</button>
                 </fieldset>
@@ -88,6 +95,35 @@
         </div>
         </div>
     </section>
+
+
+    <section class="popup popup-avatar">
+        <div class="popup__container">
+            <button class="popup__container-closeicon" type="button">
+                <img src="<%=require('./images/Closeicon.svg')%>" alt="закрыть" class="popup__container-closeicon-button">  
+            </button> 
+            <h2 class="popup__container-title">Обновить аватар</h2>
+            <form name="avatarChangePopupForm" class ="popup__container-form" novalidate>
+                <fieldset class="popup__form-info">
+                    <input id="popup__input-avatar" type="url" name="link" class="popup__input popup__input_link" placeholder="Ссылка на картинку" required>
+                    <span class="popup__input-error popup__input-avatar-error"></span>
+                    <button class="popup__container-button popup__container-button_disabled" type="submit" disabled>Сохранить</button>
+            </fieldset>
+        </form>
+    </div>
+    </section>
+
+    <section class="popup popup-confirm">
+        <div class="popup__container">
+            <button class="popup__container-closeicon" type="button">
+                <img src="<%=require('./images/Closeicon.svg')%>" alt="закрыть" class="popup__container-closeicon-button">  
+            </button> 
+            <h2 class="popup__container-title">Вы уверены?</h2>
+            <button class="popup__container-button" type="button">Да</button>
+            </div>
+    </section>
+
+
     <script type="module" src="./pages/index.js"></script>
 </body>
 </html>
